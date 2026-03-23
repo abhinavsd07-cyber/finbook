@@ -1,17 +1,26 @@
-import { Bell, Plus, Search, ChevronDown, LogOut } from 'lucide-react';
+import { Bell, Plus, Search, ChevronDown, LogOut, Menu } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function Header({ setMobileMenuOpen }) {
+export function Header({ setMobileMenuOpen, mobileMenuOpen }) {
   const [profileOpen, setProfileOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
-    <header className="h-16 bg-white/50 backdrop-blur-md flex items-center px-4 md:px-8 justify-between sticky top-0 z-30 flex-shrink-0 border-b border-slate-100">
+    <header className="h-16 bg-white/80 backdrop-blur-md flex items-center px-3 sm:px-4 md:px-6 justify-between sticky top-0 z-30 flex-shrink-0 border-b border-slate-100">
       
-      {/* Search Bar - Center/Left aligned as per image */}
-      <div className="flex-1 max-w-2xl px-2 lg:px-6 hidden md:flex">
+      {/* Mobile hamburger */}
+      <button
+        onClick={() => setMobileMenuOpen(prev => !prev)}
+        className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors lg:hidden mr-2"
+        aria-label="Open sidebar"
+      >
+        <Menu size={20} />
+      </button>
+
+      {/* Search Bar */}
+      <div className="flex-1 max-w-2xl hidden sm:flex">
         <div className="relative w-full max-w-xl">
           <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
           <input 

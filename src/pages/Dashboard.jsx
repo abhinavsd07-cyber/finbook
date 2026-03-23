@@ -103,61 +103,36 @@ export function Dashboard() {
   ];
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-500">
+    <div className="flex flex-col gap-4 sm:gap-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-semibold text-slate-800">Dashboard</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold text-slate-800">Dashboard</h2>
       </div>
 
-      {/* Tabs */}
-      <div className="flex flex-wrap gap-2 lg:gap-4 border-b border-slate-200 pb-2">
-        <button 
-          onClick={() => setActiveTab('Profit & Loss')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-            activeTab === 'Profit & Loss' 
-              ? 'bg-[#7c3aed] text-white shadow-sm' 
-              : 'text-slate-500 hover:bg-slate-100'
-          }`}
-        >
-          <BarChart2 className="w-4 h-4" />
-          <span className="text-sm">Profit & Loss</span>
-        </button>
-        <button 
-          onClick={() => setActiveTab('Top Expenses')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-            activeTab === 'Top Expenses' 
-              ? 'bg-[#7c3aed] text-white shadow-sm' 
-              : 'text-slate-500 hover:bg-slate-100'
-          }`}
-        >
-          <FileText className="w-4 h-4" />
-          <span className="text-sm">Top Expenses</span>
-        </button>
-        <button 
-          onClick={() => setActiveTab('Cash Reports')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-            activeTab === 'Cash Reports' 
-              ? 'bg-[#7c3aed] text-white shadow-sm' 
-              : 'text-slate-500 hover:bg-slate-100'
-          }`}
-        >
-          <Banknote className="w-4 h-4" />
-          <span className="text-sm">Cash Reports</span>
-        </button>
-        <button 
-          onClick={() => setActiveTab('Account Receivable / Payable')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-            activeTab === 'Account Receivable / Payable' 
-              ? 'bg-[#7c3aed] text-white shadow-sm' 
-              : 'text-slate-500 hover:bg-slate-100'
-          }`}
-        >
-          <CreditCard className="w-4 h-4" />
-          <span className="text-sm">Account Receivable / Payable</span>
-        </button>
+      {/* Tabs - horizontally scrollable on mobile */}
+      <div className="flex overflow-x-auto scrollbar-hide gap-1 sm:gap-2 border-b border-slate-200 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+        {[
+          { tab: 'Profit & Loss', Icon: BarChart2 },
+          { tab: 'Top Expenses', Icon: FileText },
+          { tab: 'Cash Reports', Icon: Banknote },
+          { tab: 'Account Receivable / Payable', Icon: CreditCard },
+        ].map(({ tab, Icon }) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors whitespace-nowrap shrink-0 ${
+              activeTab === tab
+                ? 'bg-[#7c3aed] text-white shadow-sm'
+                : 'text-slate-500 hover:bg-slate-100'
+            }`}
+          >
+            <Icon className="w-4 h-4" />
+            <span className="text-xs sm:text-sm">{tab}</span>
+          </button>
+        ))}
       </div>
 
-      {/* Top Value Cards (Shared between tabs as per the design logic or duplicate mockups) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Top Value Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
         <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-green-500 shrink-0">
@@ -238,7 +213,7 @@ export function Dashboard() {
                 <span className="text-[#7c3aed] ml-2 cursor-pointer hover:underline border-b-2 border-[#7c3aed]">All</span>
               </div>
             </div>
-            <div className="h-[300px] w-full">
+            <div className="h-[220px] sm:h-[280px] lg:h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }} barGap={2} barSize={8}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
@@ -254,7 +229,7 @@ export function Dashboard() {
           </div>
 
           {/* Bottom Grid: Top Expenses & Top Revenue */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             
             {/* Top Expenses (Gauge) */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
@@ -344,7 +319,7 @@ export function Dashboard() {
           </div>
 
           {/* Bottom Row: Summary & Expenses */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             
             {/* Summary Line Chart */}
             <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
@@ -480,7 +455,7 @@ export function Dashboard() {
                 <BarChart
                   data={horizontalExpensesData}
                   layout="vertical"
-                  margin={{ top: 20, right: 30, left: 100, bottom: 5 }}
+                  margin={{ top: 20, right: 20, left: 0, bottom: 5 }}
                   barSize={12}
                 >
                   <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
@@ -499,7 +474,8 @@ export function Dashboard() {
                     type="category" 
                     axisLine={false} 
                     tickLine={false} 
-                    tick={{ fill: '#475569', fontSize: 13, fontWeight: 500 }} 
+                    tick={{ fill: '#475569', fontSize: 12, fontWeight: 500 }}
+                    width={110}
                   />
                   <Tooltip cursor={{ fill: '#f8fafc' }} content={<HorizontalBarTooltip />} />
                   <Bar dataKey="value" fill="#58508d" radius={[0, 4, 4, 0]} />
@@ -516,7 +492,7 @@ export function Dashboard() {
                 <BarChart
                   data={horizontalRevenueData}
                   layout="vertical"
-                  margin={{ top: 20, right: 30, left: 220, bottom: 5 }}
+                  margin={{ top: 20, right: 20, left: 0, bottom: 5 }}
                   barSize={12}
                 >
                   <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
@@ -535,8 +511,8 @@ export function Dashboard() {
                     type="category" 
                     axisLine={false} 
                     tickLine={false} 
-                    tick={{ fill: '#475569', fontSize: 13, fontWeight: 500 }} 
-                    width={210}
+                    tick={{ fill: '#475569', fontSize: 11, fontWeight: 500 }} 
+                    width={175}
                   />
                   <Tooltip cursor={{ fill: '#f8fafc' }} content={<HorizontalBarTooltip />} />
                   <Bar dataKey="value" fill="#6a82af" radius={[0, 4, 4, 0]} />
