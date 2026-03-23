@@ -1,122 +1,47 @@
-import { Users, DollarSign, Activity, Briefcase, LogOut } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { StatCard } from '../components/dashboard/StatCard';
-import { MainLineChart, PerformanceBarChart, DistributionPieChart } from '../components/dashboard/DashboardCharts';
-import { RecentOrders } from '../components/dashboard/RecentOrders';
-
-const stats = [
-  {
-    title: 'Total Revenue',
-    value: '$124,563.00',
-    change: '+12.5%',
-    changeText: 'from last month',
-    trend: 'up',
-    icon: DollarSign,
-    colorClass: 'bg-blue-100 text-blue-600',
-  },
-  {
-    title: 'Active Projects',
-    value: '45',
-    change: '+3.2%',
-    changeText: 'from last month',
-    trend: 'up',
-    icon: Briefcase,
-    colorClass: 'bg-indigo-100 text-indigo-600',
-  },
-  {
-    title: 'Total Users',
-    value: '8,342',
-    change: '-1.4%',
-    changeText: 'from last month',
-    trend: 'down',
-    icon: Users,
-    colorClass: 'bg-emerald-100 text-emerald-600',
-  },
-  {
-    title: 'Activity Rate',
-    value: '94.2%',
-    change: '+4.1%',
-    changeText: 'from last week',
-    trend: 'up',
-    icon: Activity,
-    colorClass: 'bg-amber-100 text-amber-600',
-  },
-];
-
 export function Dashboard() {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    if (window.confirm('Are you sure you want to log out?')) {
-      navigate('/');
-    }
-  };
-
   return (
-    <div className="space-y-6">
-      {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <div>
-          <h1 className="text-2xl font-display font-semibold text-slate-900 m-0">Dashboard Overview</h1>
-          <p className="text-slate-500 mt-1">Welcome back to Nexus ERP. Here's what's happening today.</p>
-        </div>
-        <div className="flex gap-3">
-          <button className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-xl font-medium hover:bg-slate-50 transition-colors shadow-sm text-sm">
-            Download Report
-          </button>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors shadow-sm shadow-blue-600/20 text-sm">
-            New Campaign
-          </button>
-          <button 
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 border border-red-100 rounded-xl font-medium hover:bg-red-100 hover:text-red-700 transition-colors shadow-sm text-sm"
-          >
-            <LogOut size={16} />
-            Logout
-          </button>
-        </div>
-      </div>
-
-      {/* KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        {stats.map((stat, i) => (
-          <div key={stat.title} className="opacity-0 translate-y-4 animate-[slideUp_0.5s_ease-out_forwards]" style={{ animationDelay: `${i * 100}ms` }}>
-            <StatCard {...stat} />
-          </div>
-        ))}
-      </div>
-
-      {/* Main Content Grid 1: Line Chart & Insights */}
-      <div className="grid lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 opacity-0 translate-y-4 animate-[slideUp_0.5s_ease-out_forwards]" style={{ animationDelay: '400ms' }}>
-          <MainLineChart />
-        </div>
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-8rem)]">
+      <div className="flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-8 duration-700">
         
-        <div className="interactive-card p-6 flex flex-col items-center justify-center text-center opacity-0 translate-y-4 animate-[slideUp_0.5s_ease-out_forwards]" style={{ animationDelay: '500ms' }}>
-          <div className="w-24 h-24 rounded-full bg-indigo-50 flex items-center justify-center mb-6">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-indigo-500" strokeWidth="1.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.45m.311.06a15.09 15.09 0 00-2.448-2.45m0 0a15.09 15.09 0 00-2.448 2.45m2.448-2.45a15.09 15.09 0 002.448 2.45m-2.448 2.45a15.09 15.09 0 00-2.448-2.45"/>
-            </svg>
+        {/* Custom Empty State Illustration */}
+        <div className="relative w-48 h-48 mb-6 flex items-center justify-center">
+          
+          {/* Document Base */}
+          <div className="absolute top-4 left-10 w-24 h-32 bg-white border-2 border-[#1E3A8A] rounded-xl shadow-sm z-10 overflow-hidden flex flex-col">
+             {/* Fold at top right */}
+             <div className="absolute top-0 right-0 w-8 h-8 bg-blue-50 border-DEFAULT border-[#1E3A8A] border-t-0 border-r-0 rounded-bl-xl z-20"></div>
+             
+             {/* Content Lines */}
+             <div className="mt-8 px-4 space-y-3">
+               <div className="h-2 bg-[#EF4444] rounded-full w-full"></div>
+               <div className="h-2 bg-[#EF4444] rounded-full w-3/4"></div>
+               <div className="h-2 bg-[#EF4444] rounded-full w-5/6"></div>
+             </div>
+             
+             {/* Bottom Block */}
+             <div className="mt-auto px-4 pb-4">
+               <div className="h-4 bg-[#FBBF24] rounded-sm w-full"></div>
+             </div>
           </div>
-          <h3 className="text-xl font-semibold text-slate-900 mb-2">Nexus Intelligence is Active</h3>
-          <p className="text-slate-500 mb-6 text-sm">Your AI assistant has analyzed 450 transactions today. Revenue is projected to grow by 14%.</p>
-          <button className="w-full bg-slate-900 text-white font-medium py-2.5 rounded-xl hover:bg-slate-800 transition-colors">
-            View Insights
-          </button>
+          
+          {/* Magnifying Glass */}
+          <div className="absolute bottom-6 right-8 w-16 h-16 bg-[#22D3EE] border-4 border-[#1E3A8A] rounded-full z-30 flex items-center justify-center shadow-md">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            
+            {/* Handle */}
+            <div className="absolute top-[13px] left-[45px] w-10 h-4 bg-[#1E3A8A] rounded-full transform rotate-45 origin-left shadow-sm"></div>
+          </div>
+          
         </div>
-      </div>
 
-      {/* Main Content Grid 2: Bar & Pie Charts */}
-      <div className="grid lg:grid-cols-2 gap-6 opacity-0 translate-y-4 animate-[slideUp_0.5s_ease-out_forwards]" style={{ animationDelay: '600ms' }}>
-        <PerformanceBarChart />
-        <DistributionPieChart />
+        <h3 className="text-xl md:text-2xl font-semibold text-slate-800 tracking-tight">
+          No Reports Found
+        </h3>
+        
       </div>
-
-      {/* Tables Section */}
-      <div className="opacity-0 translate-y-4 animate-[slideUp_0.5s_ease-out_forwards]" style={{ animationDelay: '700ms' }}>
-        <RecentOrders />
-      </div>
-
     </div>
   );
 }
