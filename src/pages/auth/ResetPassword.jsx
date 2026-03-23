@@ -1,0 +1,75 @@
+import { useState } from 'react';
+import { EyeOff, Eye } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthLayout } from '../../components/auth/AuthLayout';
+import { Logo } from '../../components/auth/Logo';
+
+export function ResetPassword() {
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  return (
+    <AuthLayout 
+      imageSrc="https://plus.unsplash.com/premium_photo-1669050702410-d02f5a6bfa9f?q=80&w=2000&auto=format&fit=crop" 
+      imageAlt="Blue Abstract Ribbon 3D"
+    >
+      <div className="flex justify-center mb-16">
+        <Logo />
+      </div>
+
+      <div className="text-center mb-8">
+        <h2 className="text-[22px] font-bold text-slate-900 mb-2">Confirm Password</h2>
+        <p className="text-xs text-slate-400">Enter your new password</p>
+      </div>
+
+      <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); navigate('/dashboard'); }}>
+        <div className="space-y-1.5">
+          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide flex items-center gap-1">
+            New Password <span className="w-3 h-3 border border-slate-300 rounded-full inline-flex items-center justify-center text-[8px] text-slate-400 cursor-help">i</span>
+          </label>
+          <input 
+            type="password" 
+            placeholder="Smpl_1234"
+            defaultValue="Smpl_1234"
+            className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
+          />
+        </div>
+
+        <div className="space-y-1.5">
+          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">
+            Confirm Password
+          </label>
+          <div className="relative">
+            <input 
+              type={showPassword ? "text" : "password"} 
+              defaultValue="Smpl_1234"
+              className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
+            />
+            <button 
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+            >
+              {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+            </button>
+          </div>
+        </div>
+
+        <div className="pt-2">
+          <button type="submit" className="w-full bg-[#2A2A2A] text-white font-medium py-3 rounded-lg hover:bg-[#1A1A1A] transition-colors text-sm shadow-md">
+            Update Password
+          </button>
+        </div>
+      </form>
+
+      <div className="mt-8 text-center space-y-4">
+        <Link to="/" className="text-xs text-slate-400 hover:text-slate-700 transition-colors">
+          Back to login
+        </Link>
+        <p className="text-xs text-slate-400">
+          Need help? <a href="#" className="text-slate-700 font-semibold hover:underline">Contact Support</a>
+        </p>
+      </div>
+    </AuthLayout>
+  );
+}

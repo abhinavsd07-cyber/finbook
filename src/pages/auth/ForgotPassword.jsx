@@ -1,0 +1,50 @@
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthLayout } from '../../components/auth/AuthLayout';
+import { Logo } from '../../components/auth/Logo';
+
+export function ForgotPassword() {
+  const navigate = useNavigate();
+
+  return (
+    <AuthLayout 
+      imageSrc="https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?q=80&w=2080&auto=format&fit=crop" 
+      imageAlt="Abstract Glass Ring 3D"
+    >
+      <div className="flex justify-center mb-16">
+        <Logo />
+      </div>
+
+      <div className="text-center mb-8">
+        <h2 className="text-[22px] font-bold text-slate-900 mb-2">Forgot Password</h2>
+        <p className="text-xs text-slate-400">Enter your email and we'll send you OTP to reset your password.</p>
+      </div>
+
+      <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); navigate('/verify-otp'); }}>
+        <div className="space-y-1.5">
+          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Email</label>
+          <input 
+            type="email" 
+            placeholder="Arun|"
+            defaultValue="Arun|"
+            className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
+          />
+        </div>
+
+        <div className="pt-2">
+          <button type="submit" className="w-full bg-[#2A2A2A] text-white font-medium py-3 rounded-lg hover:bg-[#1A1A1A] transition-colors text-sm shadow-md">
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <div className="mt-8 text-center space-y-4">
+        <Link to="/" className="text-xs text-slate-400 hover:text-slate-700 transition-colors">
+          Back to login
+        </Link>
+        <p className="text-xs text-slate-400">
+          Need help? <a href="#" className="text-slate-700 font-semibold hover:underline">Contact Support</a>
+        </p>
+      </div>
+    </AuthLayout>
+  );
+}
