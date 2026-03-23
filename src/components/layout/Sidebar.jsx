@@ -1,12 +1,13 @@
-import { LayoutDashboard, FileText, Video, FileSearch, HelpCircle, LogOut, Menu, ChevronDown } from 'lucide-react';
+import { LayoutDashboard, User, FileText, Video, FileSearch, HelpCircle, LogOut, Settings, Menu, ChevronDown } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useState } from 'react';
 
 const navItems = [
   { name: 'Finsights', icon: LayoutDashboard, href: '#' },
-  { name: 'Doc management', icon: FileText, href: '#', hasDropdown: true },
+  { name: 'Vendor', icon: User, href: '#', hasDropdown: true },
+  { name: 'Task Uploads', icon: FileText, href: '#' },
+  { name: 'Request Document', icon: FileSearch, href: '#' },
   { name: 'Meetings', icon: Video, href: '#' },
-  { name: 'Request document', icon: FileSearch, href: '#' },
 ];
 
 export function Sidebar({ collapsed, setCollapsed }) {
@@ -59,7 +60,7 @@ export function Sidebar({ collapsed, setCollapsed }) {
             className={cn(
               "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group relative",
               activeItem === item.name 
-                ? "text-slate-900 font-medium" 
+                ? "bg-[#514d9b] text-white font-medium" 
                 : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
             )}
             title={collapsed ? item.name : undefined}
@@ -69,7 +70,7 @@ export function Sidebar({ collapsed, setCollapsed }) {
               strokeWidth={1.5}
               className={cn(
                 "flex-shrink-0 transition-colors duration-200",
-                activeItem === item.name ? "text-slate-800" : "text-slate-500 group-hover:text-slate-800"
+                activeItem === item.name ? "text-white" : "text-slate-500 group-hover:text-slate-800"
               )} 
             />
             {!collapsed && (
@@ -98,6 +99,14 @@ export function Sidebar({ collapsed, setCollapsed }) {
           )}>
             <HelpCircle size={18} className="text-slate-800" />
             {!collapsed && <span className="text-sm font-medium">Help</span>}
+          </button>
+          
+          <button className={cn(
+            "w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm text-slate-700 hover:bg-white transition-colors border border-white/40",
+            collapsed && "justify-center px-0"
+          )}>
+            <Settings size={18} className="text-slate-800" />
+            {!collapsed && <span className="text-sm font-medium">Settings</span>}
           </button>
           
           <button 

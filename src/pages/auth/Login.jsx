@@ -1,12 +1,34 @@
 import { useState } from 'react';
 import { EyeOff, Eye } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthLayout } from '../../components/auth/AuthLayout';
 import { Logo } from '../../components/auth/Logo';
 
 export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    // Show SweetAlert2 toast
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: 'Login Successful',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    }).then(() => {
+      navigate('/dashboard');
+    });
+  };
 
   return (
     <AuthLayout 
@@ -22,7 +44,7 @@ export function Login() {
         <p className="text-xs text-slate-400">Log in to continue manage your account</p>
       </div>
 
-      <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); navigate('/dashboard'); }}>
+      <form className="space-y-5" onSubmit={handleLogin}>
         <div className="space-y-1.5">
           <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Email</label>
           <input 
