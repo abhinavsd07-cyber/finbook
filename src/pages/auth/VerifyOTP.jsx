@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/auth/AuthLayout';
-import { Logo } from '../../components/auth/Logo';
 
 export function VerifyOTP() {
   const navigate = useNavigate();
@@ -34,9 +33,7 @@ export function VerifyOTP() {
       imageSrc="https://plus.unsplash.com/premium_photo-1673306778968-5aab577a7365?q=80&w=2670&auto=format&fit=crop" 
       imageAlt="Abstract Purple Ribbon 3D"
     >
-      <div className="flex justify-center mb-16">
-        <Logo />
-      </div>
+
 
       <div className="text-center mb-8 flex flex-col items-center">
         <h2 className="text-[22px] font-bold text-slate-900 mb-2">Verify OTP</h2>

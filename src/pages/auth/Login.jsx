@@ -3,7 +3,6 @@ import { EyeOff, Eye } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthLayout } from '../../components/auth/AuthLayout';
-import { Logo } from '../../components/auth/Logo';
 
 export function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,13 +34,10 @@ export function Login() {
       imageSrc="https://plus.unsplash.com/premium_photo-1669050702410-d02f5a6bfa9f?q=80&w=2000&auto=format&fit=crop" 
       imageAlt="Blue Abstract Ribbon 3D"
     >
-      <div className="flex justify-center mb-16">
-        <Logo />
-      </div>
 
       <div className="text-center mb-8">
         <h2 className="text-[22px] font-bold text-slate-900 mb-2">Welcome Back!</h2>
-        <p className="text-xs text-slate-400">Log in to continue manage your account</p>
+        <p className="text-xs text-slate-400">Log in to continue managing your account</p>
       </div>
 
       <form className="space-y-5" onSubmit={handleLogin}>
@@ -49,8 +45,8 @@ export function Login() {
           <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Email</label>
           <input 
             type="email" 
-            placeholder="Arun|" 
-            defaultValue="Arun|"
+            placeholder="Arun" 
+            defaultValue="Arun"
             className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
           />
         </div>

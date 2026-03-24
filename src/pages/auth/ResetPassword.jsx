@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { EyeOff, Eye } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/auth/AuthLayout';
-import { Logo } from '../../components/auth/Logo';
 
 export function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,9 +12,6 @@ export function ResetPassword() {
       imageSrc="https://plus.unsplash.com/premium_photo-1669050702410-d02f5a6bfa9f?q=80&w=2000&auto=format&fit=crop" 
       imageAlt="Blue Abstract Ribbon 3D"
     >
-      <div className="flex justify-center mb-16">
-        <Logo />
-      </div>
 
       <div className="text-center mb-8">
         <h2 className="text-[22px] font-bold text-slate-900 mb-2">Confirm Password</h2>

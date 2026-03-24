@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/auth/AuthLayout';
-import { Logo } from '../../components/auth/Logo';
 
 export function ForgotPassword() {
   const navigate = useNavigate();
@@ -10,9 +9,6 @@ export function ForgotPassword() {
       imageSrc="https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?q=80&w=2080&auto=format&fit=crop" 
       imageAlt="Abstract Glass Ring 3D"
     >
-      <div className="flex justify-center mb-16">
-        <Logo />
-      </div>
 
       <div className="text-center mb-8">
         <h2 className="text-[22px] font-bold text-slate-900 mb-2">Forgot Password</h2>
@@ -24,8 +20,8 @@ export function ForgotPassword() {
           <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Email</label>
           <input 
             type="email" 
-            placeholder="Arun|"
-            defaultValue="Arun|"
+            placeholder="Arun"
+            defaultValue="Arun"
             className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
           />
         </div>

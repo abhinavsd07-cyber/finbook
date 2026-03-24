@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import img1 from "../../assets/image1.jpg";
 import img2 from "../../assets/image2.jpg";
 import img3 from "../../assets/image3.jpg";
+import { Logo } from "./Logo";
+
 
 const defaultCarousel = [img1, img2, img3];
 
@@ -33,7 +35,7 @@ export function AuthLayout({ children }) {
               <img
                 src={img}
                 alt="Background Render"
-                className="w-full h-full object-cover object-center rotate-180"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           ))}
@@ -60,8 +62,8 @@ export function AuthLayout({ children }) {
               {defaultCarousel.map((_, idx) => (
                 <div
                   key={idx}
-                  className={`h-[3px] w-8 transition-all duration-500 ${
-                    idx === currentIdx ? "bg-[#E24C3D]" : "bg-white/60"
+                  className={`h-1 w-10 rounded-full transition-all duration-500 ${
+                    idx === currentIdx ? "bg-slate-900 shadow-sm" : "bg-white/40"
                   }`}
                 ></div>
               ))}
@@ -73,11 +75,7 @@ export function AuthLayout({ children }) {
         <div className="w-full md:w-[45%] flex flex-col px-6 sm:px-12 lg:px-20 bg-white min-h-screen">
           {/* Logo Area - Consistent spacing from top */}
           <div className="pt-12 md:pt-16 pb-8 flex justify-center">
-            {/* Replace with your <img> tag for the logo */}
-            <div className="flex items-center tracking-tighter text-2xl">
-              <span className="font-bold text-slate-900">finbook</span>
-              <span className="font-light text-red-600">global</span>
-            </div>
+            <Logo />
           </div>
 
           {/* Centered form area - Adjusts padding for mobile vs desktop */}
