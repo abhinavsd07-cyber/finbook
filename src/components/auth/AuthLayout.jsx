@@ -1,11 +1,11 @@
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { RiTwitterXLine } from "react-icons/ri";
+import { useState, useEffect } from "react";
+import img1 from "../../assets/image1.jpg";
+import img2 from "../../assets/image2.jpg";
+import img3 from "../../assets/image3.jpg";
 
-const defaultCarousel = [
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?q=80&w=2080&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2070&auto=format&fit=crop"
-];
+const defaultCarousel = [img1, img2, img3];
 
 export function AuthLayout({ children }) {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -13,78 +13,96 @@ export function AuthLayout({ children }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % defaultCarousel.length);
-    }, 4500); // 4.5 seconds per slide
+    }, 4500);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="min-h-screen w-full flex bg-white font-sans text-slate-800">
-      <div className="w-full mx-auto flex flex-col md:flex-row shadow-2xl overflow-hidden min-h-screen">
+      <div className="w-full flex flex-col md:flex-row overflow-hidden min-h-screen">
         
         {/* Left Side: Carousel + Overlay */}
-        <div className="hidden md:flex md:w-[55%] relative flex-col overflow-hidden bg-slate-900 border-r border-slate-100">
-          
-          {/* Images */}
-          {defaultCarousel.map((img, idx) => (
-             <div 
-               key={idx}
-               className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${idx === currentIdx ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`} 
-             >
-                <img 
-                  src={img} 
-                  alt="Background Render" 
-                  className="w-full h-full object-cover object-center" 
-                />
-             </div>
-          ))}
+       {/* Left Side: Carousel + Precise Gradient Background */}
+<div className="hidden md:flex md:w-[55%] relative flex-col overflow-hidden bg-gradient-to-b from-[#D0DBE8] to-[#99AFCC]">
+  
+  {/* Images - Upside down per your request */}
+  {defaultCarousel.map((img, idx) => (
+    <div
+      key={idx}
+      className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+        idx === currentIdx ? "opacity-100 z-0" : "opacity-0 -z-10"
+      }`}
+    >
+      <img
+        src={img}
+        alt="Background Render"
+        className="w-full h-full object-cover object-center rotate-180"
+      />
+    </div>
+  ))}
 
-          {/* Subtle bottom gradient to ensure text readability */}
-          <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#8EABC7]/80 via-[#8EABC7]/40 to-transparent z-10 pointer-events-none mix-blend-multiply"></div>
-          
-          <div className="relative z-20 flex flex-col justify-end h-full p-12 lg:p-20 text-white pb-20 mt-auto">
-            <h1 className="text-[38px] lg:text-[46px] leading-tight font-sans tracking-tight mb-4 drop-shadow-md">
-              Accounting <span className="font-semibold text-white">Excellence Guaranteed</span>
-            </h1>
-            <p className="text-[15px] text-slate-50 max-w-[440px] leading-relaxed mb-12 font-medium drop-shadow-sm">
-              Our CA services ensure meticulous finance management, compliance, and growth strategies, empowering your business success
-            </p>
-            
-            <div className="flex gap-2 items-center">
-              {defaultCarousel.map((_, idx) => (
-                <div 
-                  key={idx} 
-                  className={`h-1.5 transition-all duration-500 rounded-full ${idx === currentIdx ? 'w-6 bg-red-500' : 'w-4 bg-white/40'}`}
-                ></div>
-              ))}
-            </div>
-          </div>
-        </div>
+  {/* Subtle Overlay to blend the image into the background gradient */}
+  <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[#99AFCC]/60 via-transparent to-transparent z-10 pointer-events-none"></div>
 
-        {/* Right Side: Form Content Center */}
-        <div className="w-full md:w-[45%] flex flex-col px-6 lg:px-16 overflow-y-auto bg-white min-h-screen">
-          
-          {/* Main central container for the form */}
+  {/* Text Content */}
+  <div className="relative z-20 flex flex-col justify-end h-full px-14 pb-24">
+    <h1 className="text-[40px] leading-tight tracking-tight mb-4 font-['Open_Sans']">
+      <span className="font-bold text-slate-800">Accounting </span>
+      <span className="font-light text-white">
+        Excellence Guaranteed
+      </span>
+    </h1>
+
+    <p className="text-[14px] text-slate-700/80 max-w-[420px] leading-relaxed mb-12 font-['Open_Sans']">
+      Our CA services ensure meticulous finance management, compliance,
+      and growth strategies, empowering your business success
+    </p>
+
+    {/* Dash Indicators */}
+    <div className="flex gap-2 items-center">
+      {defaultCarousel.map((_, idx) => (
+        <div
+          key={idx}
+          className={`h-[3px] w-8 transition-all duration-500 ${
+            idx === currentIdx ? "bg-[#E24C3D]" : "bg-white/60"
+          }`}
+        ></div>
+      ))}
+    </div>
+  </div>
+</div>
+
+        {/* Right Side: Form Content */}
+        <div className="w-full md:w-[45%] flex flex-col px-6 lg:px-16 bg-white min-h-screen">
           <div className="flex-1 flex flex-col justify-center items-center w-full max-w-[420px] mx-auto py-12">
-             <div className="w-full mb-8">
-               {children}
-             </div>
+            <div className="w-full">{children}</div>
           </div>
-          
-          {/* Links locked to the very bottom */}
-          <div className="w-full flex-shrink-0 pb-8 mt-auto">
-            <div className="flex justify-center gap-6 text-[13px] text-slate-500 mb-6 font-medium">
+
+          {/* Footer Socials - Matches your screenshot style */}
+          <div className="w-full pb-10 mt-auto">
+            <div className="flex justify-center gap-8 text-[13px] text-slate-400 mb-6 font-medium">
               <a href="#" className="hover:text-slate-900 transition-colors">About Us</a>
               <a href="#" className="hover:text-slate-900 transition-colors">Blog</a>
+              <a href="#" className="hover:text-slate-900 transition-colors">Privacy</a>
             </div>
-            <div className="flex justify-center gap-6 text-slate-400">
-              <a href="#" className="hover:text-slate-600 transition-colors"><Facebook size={18} /></a>
-              <a href="#" className="hover:text-slate-600 transition-colors"><Twitter size={18} /></a>
-              <a href="#" className="hover:text-slate-600 transition-colors"><Linkedin size={18} /></a>
-              <a href="#" className="hover:text-slate-600 transition-colors"><Instagram size={18} /></a>
+            
+            <div className="flex justify-center gap-6 text-slate-400 items-center">
+              <a href="#" className="hover:text-slate-600 transition-colors">
+                <FaFacebook size={22} />
+              </a>
+              <a href="#" className="hover:text-slate-600 transition-colors">
+                <RiTwitterXLine size={20} />
+              </a>
+              <a href="#" className="hover:text-slate-600 transition-colors">
+                <FaLinkedin size={22} />
+              </a>
+              <a href="#" className="hover:text-slate-600 transition-colors">
+                <FaInstagram size={22} />
+              </a>
             </div>
           </div>
-          
         </div>
+
       </div>
     </div>
   );
