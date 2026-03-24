@@ -22,7 +22,7 @@ export function AuthLayout({ children }) {
     <div className="min-h-screen w-full flex bg-white font-['Open_Sans',sans-serif] text-slate-800">
       <div className="w-full flex flex-col md:flex-row min-h-screen">
         {/* LEFT SIDE: Carousel (Hidden on Mobile, flex on MD+) */}
-        <div className="hidden md:flex md:w-1/2 relative flex-col overflow-hidden bg-[#BBCFF0]">
+        <div className="hidden md:flex md:w-1/2 relative flex-col overflow-hidden bg-gradient-to-b from-[#97B7D0] to-[#96B6CF]">
           {/* Images */}
           {defaultCarousel.map((img, idx) => (
             <div
