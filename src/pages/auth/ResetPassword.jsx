@@ -8,10 +8,7 @@ export function ResetPassword() {
   const navigate = useNavigate();
 
   return (
-    <AuthLayout 
-      imageSrc="https://plus.unsplash.com/premium_photo-1669050702410-d02f5a6bfa9f?q=80&w=2000&auto=format&fit=crop" 
-      imageAlt="Blue Abstract Ribbon 3D"
-    >
+    <AuthLayout>
 
       <div className="text-center mb-8">
         <h2 className="text-[22px] font-bold text-slate-900 mb-2">Confirm Password</h2>
@@ -20,25 +17,24 @@ export function ResetPassword() {
 
       <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); navigate('/dashboard'); }}>
         <div className="space-y-1.5">
-          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide flex items-center gap-1">
+          <label className="text-[13px] font-medium text-slate-600 flex items-center gap-1">
             New Password <span className="w-3 h-3 border border-slate-300 rounded-full inline-flex items-center justify-center text-[8px] text-slate-400 cursor-help">i</span>
           </label>
           <input 
             type="password" 
-            placeholder="Smpl_1234"
-            defaultValue="Smpl_1234"
+            placeholder="Enter new password"
             className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">
+          <label className="text-[13px] font-medium text-slate-600">
             Confirm Password
           </label>
           <div className="relative">
             <input 
               type={showPassword ? "text" : "password"} 
-              defaultValue="Smpl_1234"
+              placeholder="Confirm new password"
               className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
             />
             <button 

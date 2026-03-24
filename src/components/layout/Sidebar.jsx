@@ -101,14 +101,14 @@ export function Sidebar({ collapsed, setCollapsed, onClose }) {
 
         <div className="relative z-10 p-3 space-y-1.5">
           {[
-            { Icon: HelpCircle, label: 'Help' },
-            { Icon: Settings, label: 'Settings' },
-          ].map(({ Icon, label }) => (
+            { ItemIcon: HelpCircle, label: 'Help' },
+            { ItemIcon: Settings, label: 'Settings' },
+          ].map(({ ItemIcon, label }) => (
             <button key={label} className={cn(
               "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm text-slate-700 hover:bg-white transition-colors border border-white/40 text-sm font-medium",
               collapsed && "justify-center px-0"
             )}>
-              <Icon size={18} className="text-slate-800 shrink-0" />
+              <ItemIcon size={18} className="text-slate-800 shrink-0" />
               {!collapsed && <span>{label}</span>}
             </button>
           ))}

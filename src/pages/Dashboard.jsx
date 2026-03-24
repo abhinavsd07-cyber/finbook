@@ -103,7 +103,7 @@ export function Dashboard() {
   ];
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-6 animate-in fade-in duration-500">
+    <div className="flex flex-col gap-4 sm:gap-6 animate-[slideUp_0.5s_ease-out]">
       <div className="flex items-center justify-between">
         <h2 className="text-xl sm:text-2xl font-semibold text-slate-800">Dashboard</h2>
       </div>
@@ -111,11 +111,11 @@ export function Dashboard() {
       {/* Tabs - horizontally scrollable on mobile */}
       <div className="flex overflow-x-auto scrollbar-hide gap-1 sm:gap-2 border-b border-slate-200 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
         {[
-          { tab: 'Profit & Loss', Icon: BarChart2 },
-          { tab: 'Top Expenses', Icon: FileText },
-          { tab: 'Cash Reports', Icon: Banknote },
-          { tab: 'Account Receivable / Payable', Icon: CreditCard },
-        ].map(({ tab, Icon }) => (
+          { tab: 'Profit & Loss', TabIcon: BarChart2 },
+          { tab: 'Top Expenses', TabIcon: FileText },
+          { tab: 'Cash Reports', TabIcon: Banknote },
+          { tab: 'Account Receivable / Payable', TabIcon: CreditCard },
+        ].map(({ tab, TabIcon }) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -125,7 +125,7 @@ export function Dashboard() {
                 : 'text-slate-500 hover:bg-slate-100'
             }`}
           >
-            <Icon className="w-4 h-4" />
+            <TabIcon className="w-4 h-4" />
             <span className="text-xs sm:text-sm">{tab}</span>
           </button>
         ))}

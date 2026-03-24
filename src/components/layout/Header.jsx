@@ -63,7 +63,7 @@ export function Header({ setMobileMenuOpen, mobileMenuOpen }) {
 
           {/* Profile Popover */}
           {profileOpen && (
-            <div className="absolute right-0 top-full mt-2 w-72 bg-white rounded-xl shadow-lg border border-slate-100 py-6 px-4 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="absolute right-0 top-full mt-2 w-72 bg-white rounded-xl shadow-lg border border-slate-100 py-6 px-4 z-50 animate-[slideUp_0.2s_ease-out]">
               <div className="flex flex-col items-center text-center">
                  <div className="h-20 w-20 rounded-full bg-slate-200 mb-3 flex items-center justify-center overflow-hidden">
                     <img

@@ -30,10 +30,7 @@ export function Login() {
   };
 
   return (
-    <AuthLayout 
-      imageSrc="https://plus.unsplash.com/premium_photo-1669050702410-d02f5a6bfa9f?q=80&w=2000&auto=format&fit=crop" 
-      imageAlt="Blue Abstract Ribbon 3D"
-    >
+    <AuthLayout>
 
       <div className="text-center mb-8">
         <h2 className="text-[22px] font-bold text-slate-900 mb-2">Welcome Back!</h2>
@@ -42,23 +39,22 @@ export function Login() {
 
       <form className="space-y-5" onSubmit={handleLogin}>
         <div className="space-y-1.5">
-          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Email</label>
+          <label className="text-[13px] font-medium text-slate-600">Email</label>
           <input 
             type="email" 
-            placeholder="Arun" 
-            defaultValue="Arun"
+            placeholder="Enter your email"
             className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide flex items-center gap-1">
+          <label className="text-[13px] font-medium text-slate-600 flex items-center gap-1">
             Password <span className="w-3 h-3 border border-slate-300 rounded-full inline-flex items-center justify-center text-[8px] text-slate-400 cursor-help">i</span>
           </label>
           <div className="relative">
             <input 
               type={showPassword ? "text" : "password"} 
-              defaultValue="password123"
+              placeholder="Enter your password"
               className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
             />
             <button 

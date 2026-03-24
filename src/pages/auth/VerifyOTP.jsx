@@ -29,10 +29,7 @@ export function VerifyOTP() {
   };
 
   return (
-    <AuthLayout 
-      imageSrc="https://plus.unsplash.com/premium_photo-1673306778968-5aab577a7365?q=80&w=2670&auto=format&fit=crop" 
-      imageAlt="Abstract Purple Ribbon 3D"
-    >
+    <AuthLayout>
 
 
       <div className="text-center mb-8 flex flex-col items-center">
@@ -42,7 +39,7 @@ export function VerifyOTP() {
 
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-2">
-          <label className="text-[11px] font-medium text-slate-500 tracking-wide text-center block mb-4">Enter OTP</label>
+          <label className="text-[13px] font-medium text-slate-600 text-center block mb-4">Enter OTP</label>
           <div className="flex justify-center gap-3 md:gap-4">
             {otp.map((digit, i) => (
               <input

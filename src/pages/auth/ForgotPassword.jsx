@@ -5,10 +5,7 @@ export function ForgotPassword() {
   const navigate = useNavigate();
 
   return (
-    <AuthLayout 
-      imageSrc="https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?q=80&w=2080&auto=format&fit=crop" 
-      imageAlt="Abstract Glass Ring 3D"
-    >
+    <AuthLayout>
 
       <div className="text-center mb-8">
         <h2 className="text-[22px] font-bold text-slate-900 mb-2">Forgot Password</h2>
@@ -17,11 +14,10 @@ export function ForgotPassword() {
 
       <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); navigate('/verify-otp'); }}>
         <div className="space-y-1.5">
-          <label className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Email</label>
+          <label className="text-[13px] font-medium text-slate-600">Email</label>
           <input 
             type="email" 
-            placeholder="Arun"
-            defaultValue="Arun"
+            placeholder="Enter your email"
             className="w-full px-4 py-3 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition-all font-sans"
           />
         </div>

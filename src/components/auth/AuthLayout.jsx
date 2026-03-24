@@ -6,7 +6,6 @@ import img2 from "../../assets/image2.jpg";
 import img3 from "../../assets/image3.jpg";
 import { Logo } from "./Logo";
 
-
 const defaultCarousel = [img1, img2, img3];
 
 export function AuthLayout({ children }) {
@@ -23,7 +22,7 @@ export function AuthLayout({ children }) {
     <div className="min-h-screen w-full flex bg-white font-['Open_Sans',sans-serif] text-slate-800">
       <div className="w-full flex flex-col md:flex-row min-h-screen">
         {/* LEFT SIDE: Carousel (Hidden on Mobile, flex on MD+) */}
-        <div className="hidden md:flex md:w-[55%] relative flex-col overflow-hidden bg-[#BBCFF0]">
+        <div className="hidden md:flex md:w-1/2 relative flex-col overflow-hidden bg-[#BBCFF0]">
           {/* Images */}
           {defaultCarousel.map((img, idx) => (
             <div
@@ -40,16 +39,13 @@ export function AuthLayout({ children }) {
             </div>
           ))}
 
-          {/* Figma Blend Overlay - Using #BACEEF to smooth the bottom */}
-          <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#BACEEF] via-[#BACEEF]/40 to-transparent z-10 pointer-events-none"></div>
+          {/* Removed Figma Blend Overlay to match clean design */}
 
           {/* Text Content */}
-          <div className="relative z-20 flex flex-col justify-end h-full px-10 lg:px-16 pb-20">
-            <h1 className="text-[32px] lg:text-[40px] leading-tight tracking-tight mb-4">
-              <span className="font-bold text-slate-800">Accounting </span>
-              <span className="font-light text-white">
-                Excellence Guaranteed
-              </span>
+          <div className="relative z-20 flex flex-col justify-end h-full px-12 lg:px-20 pb-20">
+            <h1 className="text-[32px] lg:text-[40px] leading-tight tracking-tight mb-4 flex flex-wrap gap-x-2">
+              <span className="font-semibold text-slate-800">Accounting</span>
+              <span className="font-light text-white">Excellence Guaranteed</span>
             </h1>
 
             <p className="text-[14px] text-slate-700/80 max-w-[420px] leading-relaxed mb-10">
@@ -63,7 +59,9 @@ export function AuthLayout({ children }) {
                 <div
                   key={idx}
                   className={`h-1 w-10 rounded-full transition-all duration-500 ${
-                    idx === currentIdx ? "bg-slate-900 shadow-sm" : "bg-white/40"
+                    idx === currentIdx
+                      ? "bg-[#E53E3E] shadow-sm"
+                      : "bg-white/40"
                   }`}
                 ></div>
               ))}
@@ -71,8 +69,8 @@ export function AuthLayout({ children }) {
           </div>
         </div>
 
-        {/* RIGHT SIDE: Form Content (Full width on mobile, 45% on desktop) */}
-        <div className="w-full md:w-[45%] flex flex-col px-6 sm:px-12 lg:px-20 bg-white min-h-screen">
+        {/* RIGHT SIDE: Form Content (Full width on mobile, 50% on desktop) */}
+        <div className="w-full md:w-1/2 flex flex-col px-6 sm:px-12 lg:px-20 bg-white min-h-screen">
           {/* Logo Area - Consistent spacing from top */}
           <div className="pt-12 md:pt-16 pb-8 flex justify-center">
             <Logo />
@@ -92,15 +90,9 @@ export function AuthLayout({ children }) {
               <a href="#" className="hover:text-slate-900 transition-colors">
                 Blog
               </a>
-              <a
-                href="#"
-                className="hidden sm:inline hover:text-slate-900 transition-colors"
-              >
-                Privacy
-              </a>
             </div>
 
-            <div className="flex justify-center gap-6 text-slate-300 items-center">
+            <div className="flex justify-center gap-6 text-slate-400 items-center">
               <a href="#" className="hover:text-slate-600 transition-colors">
                 <FaFacebook size={18} />
               </a>
