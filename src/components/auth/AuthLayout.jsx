@@ -34,7 +34,7 @@ export function AuthLayout({ children }) {
               <img
                 src={img}
                 alt="Background Render"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center rotate-180"
               />
             </div>
           ))}
@@ -42,9 +42,9 @@ export function AuthLayout({ children }) {
           {/* Removed Figma Blend Overlay to match clean design */}
 
           {/* Text Content */}
-          <div className="relative z-20 flex flex-col justify-end h-full px-12 lg:px-20 pb-20">
-            <h1 className="text-[32px] lg:text-[40px] leading-tight tracking-tight mb-4 flex flex-wrap gap-x-2">
-              <span className="font-semibold text-slate-800">Accounting</span>
+          <div className="relative z-20 flex flex-col justify-end h-full px-12 lg:px-20 pb-16">
+            <h1 className="text-[28px] lg:text-[34px] leading-tight tracking-tight mb-4 flex items-center gap-x-2 whitespace-nowrap">
+              <span className="font-bold text-slate-800">Accounting</span>
               <span className="font-light text-white">Excellence Guaranteed</span>
             </h1>
 
@@ -58,10 +58,10 @@ export function AuthLayout({ children }) {
               {defaultCarousel.map((_, idx) => (
                 <div
                   key={idx}
-                  className={`h-1 w-10 rounded-full transition-all duration-500 ${
+                  className={`h-[2px] w-6 transition-all duration-500 ${
                     idx === currentIdx
-                      ? "bg-[#E53E3E] shadow-sm"
-                      : "bg-white/40"
+                      ? "bg-red-500"
+                      : "bg-white"
                   }`}
                 ></div>
               ))}
@@ -70,19 +70,19 @@ export function AuthLayout({ children }) {
         </div>
 
         {/* RIGHT SIDE: Form Content (Full width on mobile, 50% on desktop) */}
-        <div className="w-full md:w-1/2 flex flex-col px-6 sm:px-12 lg:px-20 bg-white min-h-screen">
-          {/* Logo Area - Consistent spacing from top */}
-          <div className="pt-12 md:pt-16 pb-8 flex justify-center">
+        <div className="w-full md:w-1/2 grid grid-rows-[120px_1fr_100px] px-6 sm:px-12 lg:px-20 bg-white min-h-screen">
+          {/* Logo Area */}
+          <div className="flex items-end justify-center pb-4">
             <Logo />
           </div>
 
-          {/* Centered form area - Adjusts padding for mobile vs desktop */}
-          <div className="flex-1 flex flex-col justify-center items-center w-full max-w-[400px] mx-auto py-8">
+          {/* Centered form area */}
+          <div className="flex flex-col justify-center items-center w-full max-w-[400px] mx-auto">
             <div className="w-full">{children}</div>
           </div>
 
           {/* Footer Socials & Links */}
-          <div className="w-full pb-10 mt-auto">
+          <div className="flex flex-col justify-end pb-10">
             <div className="flex justify-center gap-6 sm:gap-8 text-[12px] text-slate-400 mb-6 font-medium">
               <a href="#" className="hover:text-slate-900 transition-colors">
                 About Us
