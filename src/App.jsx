@@ -21,7 +21,9 @@ function App() {
     return (
       <div className="h-screen w-screen bg-white flex items-center justify-center overflow-hidden">
         <div className="animate-zoom-in">
-          <Logo />
+          <div className="scale-[1.75] origin-center">
+            <Logo />
+          </div>
         </div>
       </div>
     );
