@@ -19,7 +19,7 @@ export function AuthLayout({ children }) {
   }, []);
 
   return (
-    <div className="min-h-screen w-full flex bg-white font-['Open_Sans',sans-serif] text-slate-800">
+    <div className="min-h-screen w-full flex bg-white font-sans text-slate-800">
       <div className="w-full flex flex-col md:flex-row min-h-screen">
         {/* LEFT SIDE: Carousel (Hidden on Mobile, flex on MD+) */}
         <div className="hidden md:flex md:w-1/2 relative flex-col overflow-hidden bg-gradient-to-b from-[#97B7D0] to-[#96B6CF]">
@@ -44,8 +44,10 @@ export function AuthLayout({ children }) {
           {/* Text Content */}
           <div className="relative z-20 flex flex-col justify-end h-full px-12 lg:px-20 pb-16">
             <h1 className="text-[28px] lg:text-[34px] leading-tight tracking-tight mb-4 flex items-center gap-x-2 whitespace-nowrap">
-              <span className="font-bold text-slate-800">Accounting</span>
-              <span className="font-light text-white">Excellence Guaranteed</span>
+              <span className="font-semibold text-slate-800">Accounting</span>
+              <span className="font-semibold text-white">
+                Excellence Guaranteed
+              </span>
             </h1>
 
             <p className="text-[14px] text-slate-700/80 max-w-[420px] leading-relaxed mb-10">
@@ -59,9 +61,7 @@ export function AuthLayout({ children }) {
                 <div
                   key={idx}
                   className={`h-[2px] w-6 transition-all duration-500 ${
-                    idx === currentIdx
-                      ? "bg-red-500"
-                      : "bg-white"
+                    idx === currentIdx ? "bg-red-500" : "bg-white"
                   }`}
                 ></div>
               ))}
