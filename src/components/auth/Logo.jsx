@@ -1,7 +1,9 @@
-export function Logo() {
+import { cn } from "../../lib/utils";
+
+export function Logo({ collapsed = false, className = "" }) {
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex items-start">
+    <div className={cn("flex items-center gap-2", className)}>
+      <div className={cn("flex items-start shrink-0", collapsed && "mx-auto")}>
         <svg
           width="32"
           height="40"
@@ -16,24 +18,26 @@ export function Logo() {
           <rect x="10" y="24" width="16" height="6" fill="#222" />
         </svg>
       </div>
-      <div className="flex flex-col">
-        <span
-          className="text-2xl leading-none text-[#222]"
-          style={{ fontFamily: "Georgia, serif", letterSpacing: "0.05em" }}
-        >
-          finbook
-        </span>
-        <span
-          className="text-xl leading-none text-[#888]"
-          style={{
-            fontFamily: "Georgia, serif",
-            letterSpacing: "0.08em",
-            marginLeft: "1.25rem",
-          }}
-        >
-          globa<span style={{ color: "#E53E3E" }}>l</span>
-        </span>
-      </div>
+      {!collapsed && (
+        <div className="flex flex-col">
+          <span
+            className="text-2xl leading-none text-[#222]"
+            style={{ fontFamily: "Georgia, serif", letterSpacing: "0.05em" }}
+          >
+            finbook
+          </span>
+          <span
+            className="text-xl leading-none text-[#888]"
+            style={{
+              fontFamily: "Georgia, serif",
+              letterSpacing: "0.08em",
+              marginLeft: "1.25rem",
+            }}
+          >
+            globa<span style={{ color: "#E53E3E" }}>l</span>
+          </span>
+        </div>
+      )}
     </div>
   );
 }

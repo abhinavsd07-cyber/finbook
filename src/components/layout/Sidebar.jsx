@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { useState } from "react";
+import { Logo } from "../auth/Logo";
 
 const navItems = [
   { name: "Finsights", icon: LayoutDashboard, href: "#" },
@@ -35,26 +36,7 @@ export function Sidebar({ collapsed, setCollapsed, onClose }) {
       {/* Logo + Controls */}
       <div className="flex h-16 items-center flex-shrink-0 px-4 justify-between border-b border-slate-100">
         <div className="flex items-center gap-2 overflow-hidden min-w-0">
-          <div
-            className={cn(
-              "flex items-end gap-0.5 shrink-0",
-              collapsed && "mx-auto",
-            )}
-          >
-            <div className="w-1.5 h-4 bg-slate-800"></div>
-            <div className="w-1.5 h-6 bg-slate-800"></div>
-            <div className="w-1.5 h-8 bg-slate-800"></div>
-          </div>
-          {!collapsed && (
-            <div className="flex flex-col leading-tight min-w-0">
-              <span className="font-sans font-semibold text-lg text-slate-800 tracking-tight">
-                finbook
-              </span>
-              <span className="font-sans text-sm text-slate-500 tracking-tight">
-                globa<span className="text-red-500">l</span>
-              </span>
-            </div>
-          )}
+          <Logo collapsed={collapsed} />
         </div>
 
         {/* Desktop collapse toggle */}
