@@ -20,7 +20,7 @@ function App() {
   if (showSplash) {
     return (
       <div className="h-screen w-screen bg-white flex items-center justify-center overflow-hidden">
-        <div className="animate-[zoomIn_2.2s_ease-in-out_forwards]">
+        <div className="animate-zoom-in">
           <Logo />
         </div>
       </div>

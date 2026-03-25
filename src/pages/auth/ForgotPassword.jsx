@@ -23,7 +23,7 @@ export function ForgotPassword() {
         </div>
 
         <div className="pt-2">
-          <button type="submit" className="w-full bg-[#2A2A2A] text-white font-medium py-3 rounded-lg hover:bg-[#1A1A1A] transition-colors text-sm shadow-md">
+          <button type="submit" className="w-full bg-slate-900 text-white font-medium py-3 rounded-lg hover:bg-slate-950 transition-colors text-sm shadow-md">
             Submit
           </button>
         </div>

@@ -103,7 +103,7 @@ export function Dashboard() {
   ];
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-6 animate-[slideUp_0.5s_ease-out]">
+    <div className="flex flex-col gap-4 sm:gap-6 animate-slide-up">
       <div className="flex items-center justify-between">
         <h2 className="text-xl sm:text-2xl font-semibold text-slate-800">Dashboard</h2>
       </div>
